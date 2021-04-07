@@ -75,7 +75,7 @@ img {
 /* tablet version*/
 @media screen and (max-width: 999px) {
 
-  .container {
+  .container { /* body modificherebbe gli em */
     font-size: 12px;
   }
   h1 {
@@ -89,11 +89,19 @@ img {
   }
   .row {
     width: 100%;
-    margin-top: 0;
+    margin: 0; /* RESET DEL BODY  */
   }
   img {
     height: 130px;
   }
+  /* lezioni */
+  #lezioni .row>.left,
+  #lezioni .row>.right {
+    width: calc(50% - 32px);
+    padding: 16px;
+  }
+  /* lezioni */
+
   /*steps container*/
   #steps .row>.left,
   #steps .row>.central,
@@ -110,28 +118,36 @@ img {
   #why .row>.first,
   #why .row>.second,
   #why .row>.third {
-      width: 33%;
+      width: calc(33% - 32px);
+      padding: 16px;
       float: left;
-      margin-top: 16px;
+      margin-top: 0;
       margin-bottom: 32px;
   }
   #why .first img,
   #why .second img,
   #why .third img {
-    max-height: 90px;
+    height: 90px;
+    padding: 20px;
+  }
+  #why hr {
+    display: none;
+  }
+  #why > .row::after { /* dimenticata ma funzionava uguale */
+    content: '';
+    display: table;
+    clear: both;
   }
 
   /* /why container*/
 }
-
 /* /tablet version*/
 
 /*mobile version*/
-
 @media screen and (max-width: 420px) {
     
 
-    .container {
+    /* .container {
       font-size: 12px;
     }
     h1 {
@@ -149,17 +165,17 @@ img {
     }
     img {
       height: 100px
-    }
+    } EREDITA DA TABLET  */ 
       
     /* #lezioni */
     #lezioni.container {
       background-color: #F2F2CD; 
     }
-    
     #lezioni .row>.left,
     #lezioni .row>.right {
       width: 100%;
       margin-bottom: 32px;
+      padding: 0;
     }
     /* /#lezioni */
 
@@ -167,7 +183,6 @@ img {
     #steps.container {
       background-color: #fff;
     }
-
     #steps .row>.left,
     #steps .row>.central,
     #steps .row>.right {
@@ -180,16 +195,19 @@ img {
     #why.container {
       background-color: #F2F2CD;
     }
-
     #why .row>.first, 
     #why .row>.second, 
     #why .row>.third {
       width: 100%;
       margin-top: 0;
       margin-bottom: 32px;
+      padding: 0;
     }
     #why img {
       height: 70px;
+    }
+    #why hr {
+      display: block;
     }
     
     /* /why */
